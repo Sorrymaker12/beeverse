@@ -3,6 +3,10 @@
 @section('title', 'Gift')
 
 @section('content')
+    <div class="d-flex my-4 mx-4">
+        <a class="btn btn-primary" href="/avatar" role="button" style="background-color: #89CFF0; border-color: #89CFF0">Go
+            Back</a>
+    </div>
     <div class="d-flex justify-content-center my-4">
         <h1>Gift Avatar</h1>
     </div>
@@ -18,7 +22,6 @@
                 <form action="/gift" method="post" class="my-4">
                     @csrf
                     <select class="form-select my-4" aria-label="Default select example" name="rec_id">
-                        <option selected>Choose User to Gift</option>
                         @foreach ($rec as $r)
                             @if ($r->id != $user->id)
                                 <option value="{{ $r->id }}">{{ $r->name }}</option>

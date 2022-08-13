@@ -7,7 +7,8 @@
         <h1>My Profile</h1>
     </div>
     <div class="d-flex justify-content-center my-4">
-        <a class="btn btn-primary" href="/settings" role="button">Settings</a>
+        <a class="btn btn-primary" href="/settings" role="button"
+            style="background-color: #89CFF0; border-color: #89CFF0">Settings</a>
     </div>
     <div class="d-flex mx-4 my-4 justify-content-center">
         <div class="card mx-4" style="width: 32rem;">

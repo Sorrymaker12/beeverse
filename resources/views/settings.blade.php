@@ -3,6 +3,10 @@
 @section('title', 'Settings')
 
 @section('content')
+    <div class="d-flex my-4 mx-4">
+        <a class="btn btn-primary" href="/myprofile" role="button" style="background-color: #89CFF0; border-color: #89CFF0">Go
+            Back</a>
+    </div>
     <div class="d-flex justify-content-center my-4">
         <h1>Settings</h1>
     </div>

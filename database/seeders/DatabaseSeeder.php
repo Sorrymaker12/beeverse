@@ -25,57 +25,293 @@ class DatabaseSeeder extends Seeder
         $faker = Factory::create();
 
         // create users
-        for ($i = 1; $i <= 5; $i++) {
-            User::create([
-                'id' => $i,
-                'name' => $faker->name,
-                'email' => $faker->email(),
-                'password' => bcrypt('password'),
-                'gender' => 'male',
-                'linkedin' => 'https://www.linkedin.com/in/' . $faker->firstName(),
-                'mobile_number' => $faker->numberBetween(1000000, 9999999),
-                'current_job' => $faker->word(),
-                'current_company' => $faker->company(),
-                'profile_picture' => 'profile' . $i . '.jpg',
-                'registration_price' => $faker->numberBetween(100000, 125000),
-                'coins' => $faker->numberBetween(100, 500),
-            ]);
-        }
+        User::create([
+            'id' => 1,
+            'name' => 'Anthony A',
+            'email' => 'AnthonyA@gmail.com',
+            'password' => bcrypt('12345678'),
+            'gender' => 'male',
+            'linkedin' => 'https://www.linkedin.com/in/' . 'AnthonyA',
+            'mobile_number' => '123456',
+            'current_job' => 'Director',
+            'current_company' => 'Anthony\'s Company',
+            'profile_picture' => 'profile' . 1 . '.jpg',
+            'registration_price' => 120000,
+            'coins' => 65000,
+        ]);
+
+        User::create([
+            'id' => 2,
+            'name' => 'Anthony B',
+            'email' => 'AnthonyB@gmail.com',
+            'password' => bcrypt('12345678'),
+            'gender' => 'male',
+            'linkedin' => 'https://www.linkedin.com/in/' . 'AnthonyB',
+            'mobile_number' => '123456',
+            'current_job' => 'Vice Director',
+            'current_company' => 'Anthony\'s Company',
+            'profile_picture' => 'profile' . 2 . '.jpg',
+            'registration_price' => 120000,
+            'coins' => 65000,
+        ]);
+
+        User::create([
+            'id' => 3,
+            'name' => 'Anthony C',
+            'email' => 'AnthonyC@gmail.com',
+            'password' => bcrypt('12345678'),
+            'gender' => 'male',
+            'linkedin' => 'https://www.linkedin.com/in/' . 'AnthonyC',
+            'mobile_number' => '123456',
+            'current_job' => 'Manager',
+            'current_company' => 'Anthony\'s Company',
+            'profile_picture' => 'profile' . 3 . '.jpg',
+            'registration_price' => 120000,
+            'coins' => 65000,
+        ]);
+
+        User::create([
+            'id' => 4,
+            'name' => 'Anthony D',
+            'email' => 'AnthonyD@gmail.com',
+            'password' => bcrypt('12345678'),
+            'gender' => 'male',
+            'linkedin' => 'https://www.linkedin.com/in/' . 'AnthonyD',
+            'mobile_number' => '123456',
+            'current_job' => 'Vice Manager',
+            'current_company' => 'Anthony\'s Company',
+            'profile_picture' => 'profile' . 4 . '.jpg',
+            'registration_price' => 120000,
+            'coins' => 65000,
+        ]);
+
+        User::create([
+            'id' => 5,
+            'name' => 'Anthony E',
+            'email' => 'AnthonyE@gmail.com',
+            'password' => bcrypt('12345678'),
+            'gender' => 'male',
+            'linkedin' => 'https://www.linkedin.com/in/' . 'AnthonyE',
+            'mobile_number' => '123456',
+            'current_job' => 'President',
+            'current_company' => 'Anthony\'s Company',
+            'profile_picture' => 'profile' . 5 . '.jpg',
+            'registration_price' => 120000,
+            'coins' => 65000,
+        ]);
 
         // create fields of works
-        for ($i = 1; $i <= 5; $i++) {
-            FieldOfWork::create([
-                'id' => $i,
-                'name' => $faker->word(),
-            ]);
-        }
+        FieldOfWork::create([
+            'id' => 1,
+            'name' => 'Banking',
+        ]);
+
+        FieldOfWork::create([
+            'id' => 2,
+            'name' => 'Entertainment',
+        ]);
+
+        FieldOfWork::create([
+            'id' => 3,
+            'name' => 'Music',
+        ]);
+
+        FieldOfWork::create([
+            'id' => 4,
+            'name' => 'Marketing',
+        ]);
+
+        FieldOfWork::create([
+            'id' => 5,
+            'name' => 'Automotive',
+        ]);
 
         // create interests
-        for ($i = 1; $i <= 15; $i++) {
-            Interest::create([
-                'id' => $i,
-                'user_id' => ceil($i / 3),
-                'fow_id' => $i % 3 + 1,
-            ]);
-        }
+        Interest::create([
+            'id' => 1,
+            'user_id' => 1,
+            'fow_id' => 1,
+        ]);
 
+        Interest::create([
+            'id' => 2,
+            'user_id' => 1,
+            'fow_id' => 2,
+        ]);
+
+        Interest::create([
+            'id' => 3,
+            'user_id' => 1,
+            'fow_id' => 3,
+        ]);
+
+        Interest::create([
+            'id' => 4,
+            'user_id' => 2,
+            'fow_id' => 2,
+        ]);
+
+        Interest::create([
+            'id' => 5,
+            'user_id' => 2,
+            'fow_id' => 3,
+        ]);
+
+        Interest::create([
+            'id' => 6,
+            'user_id' => 2,
+            'fow_id' => 4,
+        ]);
+
+        Interest::create([
+            'id' => 7,
+            'user_id' => 3,
+            'fow_id' => 3,
+        ]);
+
+        Interest::create([
+            'id' => 8,
+            'user_id' => 3,
+            'fow_id' => 4,
+        ]);
+
+        Interest::create([
+            'id' => 9,
+            'user_id' => 3,
+            'fow_id' => 5,
+        ]);
+
+        Interest::create([
+            'id' => 10,
+            'user_id' => 4,
+            'fow_id' => 4,
+        ]);
+
+        Interest::create([
+            'id' => 11,
+            'user_id' => 4,
+            'fow_id' => 5,
+        ]);
+
+        Interest::create([
+            'id' => 12,
+            'user_id' => 4,
+            'fow_id' => 1,
+        ]);
+
+        Interest::create([
+            'id' => 13,
+            'user_id' => 5,
+            'fow_id' => 5,
+        ]);
+
+        Interest::create([
+            'id' => 14,
+            'user_id' => 5,
+            'fow_id' => 1,
+        ]);
+
+        Interest::create([
+            'id' => 15,
+            'user_id' => 5,
+            'fow_id' => 2,
+        ]);
         // create avatars
-        for ($i = 1; $i <= 10; $i++) {
-            Avatar::create([
-                'id' => $i,
-                'name' => $faker->word(),
-                'price' => $faker->numberBetween(50, 100000),
-                'image' => 'avatar' . $i . '.png',
-            ]);
-        }
+        Avatar::create([
+            'id' => 1,
+            'name' => 'Birdie',
+            'price' => 50,
+            'image' => 'avatar' . 1 . '.png',
+        ]);
+
+        Avatar::create([
+            'id' => 2,
+            'name' => 'Pengu',
+            'price' => 500,
+            'image' => 'avatar' . 2 . '.png',
+        ]);
+
+        Avatar::create([
+            'id' => 3,
+            'name' => 'Hedgehog',
+            'price' => 100,
+            'image' => 'avatar' . 3 . '.png',
+        ]);
+
+        Avatar::create([
+            'id' => 4,
+            'name' => 'Wormie',
+            'price' => 5010,
+            'image' => 'avatar' . 4 . '.png',
+        ]);
+
+        Avatar::create([
+            'id' => 5,
+            'name' => 'Mickey',
+            'price' => 5100,
+            'image' => 'avatar' . 5 . '.png',
+        ]);
+
+        Avatar::create([
+            'id' => 6,
+            'name' => 'Fat Cat',
+            'price' => 5070,
+            'image' => 'avatar' . 6 . '.png',
+        ]);
+
+        Avatar::create([
+            'id' => 7,
+            'name' => 'Ninja',
+            'price' => 44444,
+            'image' => 'avatar' . 7 . '.png',
+        ]);
+
+        Avatar::create([
+            'id' => 8,
+            'name' => 'Dwarf',
+            'price' => 5100,
+            'image' => 'avatar' . 8 . '.png',
+        ]);
+
+        Avatar::create([
+            'id' => 9,
+            'name' => 'Psyduck',
+            'price' => 51000,
+            'image' => 'avatar' . 9 . '.png',
+        ]);
+
+        Avatar::create([
+            'id' => 10,
+            'name' => 'ROBLOX',
+            'price' => 10000,
+            'image' => 'avatar' . 10 . '.png',
+        ]);
 
         // create avatar collections
-        for ($i = 1; $i <= 10; $i++) {
-            AvatarCollection::create([
-                'id' => $i,
-                'user_id' => ceil($i / 2),
-                'avatar_id' => $i % 2 + 1,
-            ]);
-        }
+        AvatarCollection::create([
+            'id' => 1,
+            'user_id' => 1,
+            'avatar_id' => 1,
+        ]);
+        AvatarCollection::create([
+            'id' => 2,
+            'user_id' => 2,
+            'avatar_id' => 1,
+        ]);
+        AvatarCollection::create([
+            'id' => 3,
+            'user_id' => 3,
+            'avatar_id' => 1,
+        ]);
+        AvatarCollection::create([
+            'id' => 4,
+            'user_id' => 4,
+            'avatar_id' => 1,
+        ]);
+        AvatarCollection::create([
+            'id' => 5,
+            'user_id' => 5,
+            'avatar_id' => 1,
+        ]);
     }
 }

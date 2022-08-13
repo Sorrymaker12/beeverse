@@ -45,3 +45,4 @@ Route::get('/myprofile', [UserController::class, 'index_myprofile'])->middleware
 Route::get('/settings', [UserController::class, 'index_settings'])->middleware('usermiddleware');
 Route::post('/invis', [UserController::class, 'invis'])->middleware('usermiddleware');
 Route::post('/vis', [UserController::class, 'vis'])->middleware('usermiddleware');
+Route::post('/search', [UserController::class, 'search']);

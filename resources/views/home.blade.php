@@ -6,18 +6,35 @@
     <div class="d-flex justify-content-center my-4">
         <h1>Home</h1>
     </div>
+    <div class="d-flex justify-content-center my-4">
+        <form method="post" action="/search" class="d-flex" role="search" style="width: 80rem">
+            @csrf
+            <input class="form-control mx-2" type="text" placeholder="Search By Name" aria-label="Search" name="name">
+            <select class="form-select mx-2" aria-label="Default select example" name="gender">
+                <option value="either">Both Genders</option>
+                <option value="female">Male</option>
+                <option value="male">Female</option>
+            </select>
+            <select class="form-select mx-2" aria-label="Default select example" name="fow">
+                <option value="0">Every Field of Work</option>
+                @foreach ($FOW as $f)
+                    <option value="{{ $f->id }}">{{ $f->name }}</option>
+                @endforeach
+            </select>
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+    </div>
     <div class="d-flex mx-4 my-4 justify-content-center">
-        {{-- Search Bar --}}
         <div class="row row-cols-1 row-cols-md-4 g-4">
             @foreach ($users as $user)
                 @if (Auth::check() && Auth::user()->id == $user->id)
                 @else
                     <div class="col">
-                        <div class="card" style="height: 600px; width: 450px">
+                        <div class="card" style="height: 800px; width: 450px">
                             <a href="/profile/{{ $user->id }}">
                                 <img src="{{ asset('Storage/img/' . $user->profile_picture) }}" class="card-img-top"
                                     alt="..."
-                                    style="height: 300px; background-size: auto; object-fit: cover; object-position: 100% 0"></a>
+                                    style="height: 500px; background-size: auto; object-fit: cover; object-position: 100% 0"></a>
                             <div class="card-body text-center">
                                 <h5 class="card-title">{{ $user->name }}</h5>
                                 <h5 class="card-title">{{ $user->current_job }} at {{ $user->current_company }}</h5>

@@ -7,7 +7,7 @@
         <h1>Show off</h1>
     </div>
     <div class="d-flex justify-content-center my-4">
-        <h3>Your Avatar : {{ $user->coins }}</h3>
+        <h3>Your Avatar :</h3>
     </div>
     <div class="d-flex mx-4 my-4 justify-content-center">
         <div class="row row-cols-1 row-cols-md-2 g-4 mx-5">

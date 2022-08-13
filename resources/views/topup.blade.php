@@ -3,6 +3,10 @@
 @section('title', 'Top Up')
 
 @section('content')
+    <div class="d-flex my-4 mx-4">
+        <a class="btn btn-primary" href="/avatar" role="button" style="background-color: #89CFF0; border-color: #89CFF0">Go
+            Back</a>
+    </div>
     <div class="d-flex justify-content-center my-4">
         <h1>Top Up</h1>
     </div>

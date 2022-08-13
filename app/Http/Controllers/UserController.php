@@ -404,4 +404,15 @@ class UserController extends Controller
         Alert::success('Invisibility Disabled', 'You Have Successfully Disabled Invisibility');
         return redirect('/settings');
     }
+
+    public function search(Request $request)
+    {
+        $name = $request->name;
+        $users = User::where('name', 'like', '%' . $name . '%')->where('gender', '!=', $request->gender)->where('visible', '=', 'visible')->get();
+        $int = Interest::all();
+        $fow = $request->fow;
+        $FOW = FieldOfWork::all();
+
+        return view('search_result', ['users' => $users, 'int' => $int, 'fow' => $fow, 'FOW' => $FOW]);
+    }
 }
