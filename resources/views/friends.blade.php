@@ -25,7 +25,9 @@
                                         <p> <strong>Email :</strong> {{ $u->email }}</p>
                                         <p> <strong>Mobile Number :</strong> {{ $u->mobile_number }}</p>
                                         <p> <strong>Linkedin :</strong> {{ $u->linkedin }}</p>
-                                        <p> <strong>Position : </strong>{{ $u->current_job }} at {{ $u->current_company }}
+                                        <p> <strong>Current Profession : </strong>{{ $u->current_job }} at
+                                            {{ $u->current_company }}</p>
+                                        <p> <strong>Current Field of Work : </strong>{{ $u->current_fow }}</p>
                                         </p>
                                         <form action="/accept" method="post">
                                             @csrf
@@ -57,8 +59,9 @@
                                         <p> <strong>Email :</strong> {{ $u->email }}</p>
                                         <p> <strong>Mobile Number :</strong> {{ $u->mobile_number }}</p>
                                         <p> <strong>Linkedin :</strong> {{ $u->linkedin }}</p>
-                                        <p> <strong>Position : </strong>{{ $u->current_job }} at {{ $u->current_company }}
-                                        </p>
+                                        <p> <strong>Current Profession : </strong>{{ $u->current_job }} at
+                                            {{ $u->current_company }}</p>
+                                        <p> <strong>Current Field of Work : </strong>{{ $u->current_fow }}</p>
                                         <a class="btn btn-primary" href="{{ $f->video_link }}" target="_blank"
                                             role="button" style="background-color: #89CFF0; border-color: #89CFF0">Call</a>
                                     </div>
@@ -85,8 +88,9 @@
                                         <p> <strong>Email :</strong> {{ $u->email }}</p>
                                         <p> <strong>Mobile Number :</strong> {{ $u->mobile_number }}</p>
                                         <p> <strong>Linkedin :</strong> {{ $u->linkedin }}</p>
-                                        <p> <strong>Position : </strong>{{ $u->current_job }} at {{ $u->current_company }}
-                                        </p>
+                                        <p> <strong>Current Profession : </strong>{{ $u->current_job }} at
+                                            {{ $u->current_company }}</p>
+                                        <p> <strong>Current Field of Work : </strong>{{ $u->current_fow }}</p>
                                     </div>
                                 </div>
                             </div>

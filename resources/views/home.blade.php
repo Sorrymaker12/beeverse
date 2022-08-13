@@ -9,28 +9,23 @@
     <div class="d-flex justify-content-center my-4">
         <form method="post" action="/search" class="d-flex" role="search" style="width: 80rem">
             @csrf
-            <input class="form-control mx-2" type="text" placeholder="Search By Name" aria-label="Search" name="name">
+            <input class="form-control mx-2" type="text" placeholder="Search By Field Of Work" aria-label="Search"
+                name="fow">
             <select class="form-select mx-2" aria-label="Default select example" name="gender">
                 <option value="either">Both Genders</option>
                 <option value="female">Male</option>
                 <option value="male">Female</option>
             </select>
-            <select class="form-select mx-2" aria-label="Default select example" name="fow">
-                <option value="0">Every Field of Work</option>
-                @foreach ($FOW as $f)
-                    <option value="{{ $f->id }}">{{ $f->name }}</option>
-                @endforeach
-            </select>
             <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
     </div>
     <div class="d-flex mx-4 my-4 justify-content-center">
-        <div class="row row-cols-1 row-cols-md-4 g-4">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
             @foreach ($users as $user)
                 @if (Auth::check() && Auth::user()->id == $user->id)
                 @else
                     <div class="col">
-                        <div class="card" style="height: 800px; width: 450px">
+                        <div class="card">
                             <a href="/profile/{{ $user->id }}">
                                 <img src="{{ asset('Storage/img/' . $user->profile_picture) }}" class="card-img-top"
                                     alt="..."
@@ -38,16 +33,11 @@
                             <div class="card-body text-center">
                                 <h5 class="card-title">{{ $user->name }}</h5>
                                 <h5 class="card-title">{{ $user->current_job }} at {{ $user->current_company }}</h5>
+                                <h5 class="card-title">{{ $user->current_fow }} Field of Work</h5>
                                 <h5 class="card-title"> Interests : </h5>
-                                @foreach ($interest as $i)
-                                    @if ($i->user_id == $user->id)
-                                        @foreach ($FOW as $f)
-                                            @if ($f->id == $i->fow_id)
-                                                <p class="card-text">{{ $f->name }}</p>
-                                            @endif
-                                        @endforeach
-                                    @endif
-                                @endforeach
+                                <p>{{ $user->fow_1 }}</p>
+                                <p>{{ $user->fow_2 }}</p>
+                                <p>{{ $user->fow_3 }}</p>
                                 <div class="d-flex flex-row mb-3 justify-content-center">
                                     <a class="btn btn-primary mx-2" href="/profile/{{ $user->id }}" role="button"
                                         style="background-color: #89CFF0; border-color: #89CFF0">View Profile</a>

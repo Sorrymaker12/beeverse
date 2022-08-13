@@ -20,9 +20,7 @@ class UserController extends Controller
     public function index_home()
     {
         $users = User::where('visible', '=', 'visible')->get();
-        $interest = Interest::all();
-        $FOW = FieldOfWork::all();
-        return view('home', ['users' => $users, 'interest' => $interest, 'FOW' => $FOW]);
+        return view('home', ['users' => $users]);
     }
 
     public function index_login()
@@ -32,10 +30,9 @@ class UserController extends Controller
 
     public function index_register()
     {
-        $FOW = FieldOfWork::all();
         $faker = Factory::create();
         $price = $faker->numberBetween(100000, 125000);
-        return view('auth.register', ['FOW' => $FOW, 'price' => $price]);
+        return view('auth.register', ['price' => $price]);
     }
 
     public function register(Request $request)
@@ -49,9 +46,10 @@ class UserController extends Controller
             'linkedin' => 'required',
             'current_job' => 'required',
             'current_company' => 'required',
-            'interest1' => 'required|different:interest2|different:interest3',
-            'interest2' => 'required|different:interest3',
-            'interest3' => 'required',
+            'current_fow' => 'required',
+            'fow_1' => 'required|different:fow_2|different:fow_3',
+            'fow_2' => 'required|different:fow_3',
+            'fow_3' => 'required',
             'profile_picture' => 'required|image',
         ]);
 
@@ -67,32 +65,16 @@ class UserController extends Controller
         $user->linkedin = 'https://wwww.linkedin.com/in/' . $request->linkedin;
         $user->current_job = $request->current_job;
         $user->current_company = $request->current_company;
+        $user->current_fow = $request->current_fow;
+        $user->fow_1 = $request->fow_1;
+        $user->fow_2 = $request->fow_2;
+        $user->fow_3 = $request->fow_3;
         $user->mobile_number = $request->mobile_number;
         $user->profile_picture = $profile_picture;
         $user->registration_price = $request->registration_price;
         $user->coins = 0;
 
         $user->save();
-
-        // bikin interests
-        $interest1 = new Interest();
-        $interest1->user_id = $user->id;
-        $FOW = FieldOfWork::find($request->interest1);
-        $interest1->fow_id = $FOW->id;
-        $interest1->save();
-
-        $interest2 = new Interest();
-        $interest2->user_id = $user->id;
-        $FOW = FieldOfWork::find($request->interest2);
-        $interest2->fow_id = $FOW->id;
-        $interest2->save();
-
-        $interest3 = new Interest();
-        $interest3->user_id = $user->id;
-        $FOW = FieldOfWork::find($request->interest3);
-        $interest3->fow_id = $FOW->id;
-        $interest3->save();
-
         // bikin avatar collection
         $avatar_collection = new AvatarCollection();
         $avatar_collection->user_id = $user->id;
@@ -182,11 +164,9 @@ class UserController extends Controller
     public function index_profile($id)
     {
         $user = User::find($id);
-        $FOW = FieldOfWork::all();
-        $interest = Interest::all();
         $AC = AvatarCollection::all();
         $avatar = Avatar::all();
-        return view('profile', ['user' => $user, 'FOW' => $FOW, 'interest' => $interest, 'AC' => $AC, 'avatar' => $avatar]);
+        return view('profile', ['user' => $user, 'AC' => $AC, 'avatar' => $avatar]);
     }
 
     public function wish(Request $request)
@@ -367,11 +347,9 @@ class UserController extends Controller
     {
         $a = auth()->user();
         $user = User::find($a->id);
-        $FOW = FieldOfWork::all();
-        $interest = Interest::all();
         $AC = AvatarCollection::all();
         $avatar = Avatar::all();
-        return view('myprofile', ['user' => $user, 'FOW' => $FOW, 'interest' => $interest, 'AC' => $AC, 'avatar' => $avatar]);
+        return view('myprofile', ['user' => $user, 'AC' => $AC, 'avatar' => $avatar]);
     }
 
     public function index_settings()
@@ -408,11 +386,17 @@ class UserController extends Controller
     public function search(Request $request)
     {
         $name = $request->name;
-        $users = User::where('name', 'like', '%' . $name . '%')->where('gender', '!=', $request->gender)->where('visible', '=', 'visible')->get();
-        $int = Interest::all();
-        $fow = $request->fow;
-        $FOW = FieldOfWork::all();
+        $users = User::where('gender', '!=', $request->gender)->where('visible', '=', 'visible')->where(
+            function ($query) use ($request) {
+                $query->where('current_fow', 'like', '%' . $request->fow . '%')->orWhere('fow_1', 'like', '%' . $request->fow . '%')->orWhere('fow_2', 'like', '%' . $request->fow . '%')->orWhere('fow_3', 'like', '%' . $request->fow . '%');
+            }
+        )->get();
 
-        return view('search_result', ['users' => $users, 'int' => $int, 'fow' => $fow, 'FOW' => $FOW]);
+        if ($users->isEmpty()) {
+            Alert::error('No Users Found', 'No Users Found');
+            return redirect('/home');
+        }
+
+        return view('search_result', ['users' => $users]);
     }
 }

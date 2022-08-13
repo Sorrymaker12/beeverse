@@ -62,46 +62,20 @@
                         <input type="text" class="form-control" id="current_company" name="current_company">
                     </div>
                     <div class="mb-3">
-                        <label class="fw-bold">Interest 1</label>
-                        <div class="d-flex flew-row">
-                            @foreach ($FOW as $f)
-                                <div class="form-check px-4">
-                                    <input class="form-check-input" type="radio" value="{{ $f->id }}"
-                                        id="{{ $f->name }}" name="interest1">
-                                    <label class="form-check-label" for="{{ $f->name }}">
-                                        {{ $f->name }}
-                                    </label>
-                                </div>
-                            @endforeach
-                        </div>
+                        <label class="fw-bold">Current Field Of Work</label>
+                        <input type="text" class="form-control" id="current_company" name="current_fow">
                     </div>
                     <div class="mb-3">
-                        <label class="fw-bold">Interest 2</label>
-                        <div class="d-flex flew-row">
-                            @foreach ($FOW as $f)
-                                <div class="form-check px-4">
-                                    <input class="form-check-input" type="radio" value="{{ $f->id }}"
-                                        id="{{ $f->name }}" name="interest2">
-                                    <label class="form-check-label" for="{{ $f->name }}">
-                                        {{ $f->name }}
-                                    </label>
-                                </div>
-                            @endforeach
-                        </div>
+                        <label class="fw-bold">Field of Work 1 : </label>
+                        <input type="text" class="form-control" id="current_company" name="fow_1">
                     </div>
                     <div class="mb-3">
-                        <label class="fw-bold">Interest 3</label>
-                        <div class="d-flex flew-row">
-                            @foreach ($FOW as $f)
-                                <div class="form-check px-4">
-                                    <input class="form-check-input" type="radio" value="{{ $f->id }}"
-                                        id="{{ $f->name }}" name="interest3">
-                                    <label class="form-check-label" for="{{ $f->name }}">
-                                        {{ $f->name }}
-                                    </label>
-                                </div>
-                            @endforeach
-                        </div>
+                        <label class="fw-bold">Field of Work 2 :</label>
+                        <input type="text" class="form-control" id="current_company" name="fow_2">
+                    </div>
+                    <div class="mb-3">
+                        <label class="fw-bold">Field of Work 3 :</label>
+                        <input type="text" class="form-control" id="current_company" name="fow_3">
                     </div>
                     <div class="mb-3">
                         <label for="profile_picture" class="form-label  fw-bold">Profile Picture</label>

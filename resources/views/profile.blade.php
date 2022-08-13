@@ -3,6 +3,10 @@
 @section('title', 'Profile')
 
 @section('content')
+    <div class="d-flex my-4 mx-4">
+        <a class="btn btn-primary" href="/" role="button" style="background-color: #89CFF0; border-color: #89CFF0">Go
+            Back</a>
+    </div>
     <div class="d-flex mx-4 my-4 justify-content-center">
         <div class="card mx-4" style="width: 32rem;">
             <img src="{{ asset('Storage/img/' . $user->profile_picture) }}" class="img-fluid" alt="...">
@@ -11,21 +15,16 @@
                 <p> <strong>Email :</strong> {{ $user->email }}</p>
                 <p> <strong>Mobile Number :</strong> {{ $user->mobile_number }}</p>
                 <p> <strong>Linkedin :</strong> {{ $user->linkedin }}</p>
-                <p> <strong>Position : </strong>{{ $user->current_job }} at {{ $user->current_company }}</p>
+                <p> <strong>Current Profession : </strong>{{ $user->current_job }} at {{ $user->current_company }}</p>
+                <p> <strong>Current Field of Work : </strong>{{ $user->current_fow }}</p>
             </div>
         </div>
         <div class="card mx-4" style="width: 48rem;">
             <div class="card-body">
                 <h5>Interests : </h5>
-                @foreach ($interest as $i)
-                    @if ($i->user_id == $user->id)
-                        @foreach ($FOW as $f)
-                            @if ($f->id == $i->fow_id)
-                                <p class="card-text">{{ $f->name }}</p>
-                            @endif
-                        @endforeach
-                    @endif
-                @endforeach
+                <p>{{ $user->fow_1 }}</p>
+                <p>{{ $user->fow_2 }}</p>
+                <p>{{ $user->fow_3 }}</p>
                 <h5>Avatars : </h5>
                 @foreach ($AC as $ac)
                     @if ($ac->user_id == $user->id)

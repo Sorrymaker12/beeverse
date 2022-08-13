@@ -42,11 +42,6 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function interest()
-    {
-        return $this->hasOne(Interest::class);
-    }
-
     public function avatarCollection()
     {
         return $this->hasOne(avatarCollection::class);

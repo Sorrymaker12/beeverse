@@ -33,6 +33,10 @@ class DatabaseSeeder extends Seeder
             'gender' => 'male',
             'linkedin' => 'https://www.linkedin.com/in/' . 'AnthonyA',
             'mobile_number' => '123456',
+            'current_fow' => 'Banking',
+            'fow_1' => 'Banking',
+            'fow_2' => 'Finance',
+            'fow_3' => 'Accounting',
             'current_job' => 'Director',
             'current_company' => 'Anthony\'s Company',
             'profile_picture' => 'profile' . 1 . '.jpg',
@@ -50,6 +54,10 @@ class DatabaseSeeder extends Seeder
             'mobile_number' => '123456',
             'current_job' => 'Vice Director',
             'current_company' => 'Anthony\'s Company',
+            'current_fow' => 'Entertainment',
+            'fow_1' => 'Entertainment',
+            'fow_2' => 'Music',
+            'fow_3' => 'Events',
             'profile_picture' => 'profile' . 2 . '.jpg',
             'registration_price' => 120000,
             'coins' => 65000,
@@ -66,6 +74,10 @@ class DatabaseSeeder extends Seeder
             'current_job' => 'Manager',
             'current_company' => 'Anthony\'s Company',
             'profile_picture' => 'profile' . 3 . '.jpg',
+            'current_fow' => 'Technology',
+            'fow_1' => 'Automotive',
+            'fow_2' => 'Racing',
+            'fow_3' => 'Space',
             'registration_price' => 120000,
             'coins' => 65000,
         ]);
@@ -81,6 +93,10 @@ class DatabaseSeeder extends Seeder
             'current_job' => 'Vice Manager',
             'current_company' => 'Anthony\'s Company',
             'profile_picture' => 'profile' . 4 . '.jpg',
+            'current_fow' => 'Music',
+            'fow_1' => 'Music',
+            'fow_2' => 'Art',
+            'fow_3' => 'Design',
             'registration_price' => 120000,
             'coins' => 65000,
         ]);
@@ -96,126 +112,15 @@ class DatabaseSeeder extends Seeder
             'current_job' => 'President',
             'current_company' => 'Anthony\'s Company',
             'profile_picture' => 'profile' . 5 . '.jpg',
+            'current_fow' => 'Fashion',
+            'fow_1' => 'Fashion',
+            'fow_2' => 'Business',
+            'fow_3' => 'Design',
             'registration_price' => 120000,
             'coins' => 65000,
         ]);
 
-        // create fields of works
-        FieldOfWork::create([
-            'id' => 1,
-            'name' => 'Banking',
-        ]);
 
-        FieldOfWork::create([
-            'id' => 2,
-            'name' => 'Entertainment',
-        ]);
-
-        FieldOfWork::create([
-            'id' => 3,
-            'name' => 'Music',
-        ]);
-
-        FieldOfWork::create([
-            'id' => 4,
-            'name' => 'Marketing',
-        ]);
-
-        FieldOfWork::create([
-            'id' => 5,
-            'name' => 'Automotive',
-        ]);
-
-        // create interests
-        Interest::create([
-            'id' => 1,
-            'user_id' => 1,
-            'fow_id' => 1,
-        ]);
-
-        Interest::create([
-            'id' => 2,
-            'user_id' => 1,
-            'fow_id' => 2,
-        ]);
-
-        Interest::create([
-            'id' => 3,
-            'user_id' => 1,
-            'fow_id' => 3,
-        ]);
-
-        Interest::create([
-            'id' => 4,
-            'user_id' => 2,
-            'fow_id' => 2,
-        ]);
-
-        Interest::create([
-            'id' => 5,
-            'user_id' => 2,
-            'fow_id' => 3,
-        ]);
-
-        Interest::create([
-            'id' => 6,
-            'user_id' => 2,
-            'fow_id' => 4,
-        ]);
-
-        Interest::create([
-            'id' => 7,
-            'user_id' => 3,
-            'fow_id' => 3,
-        ]);
-
-        Interest::create([
-            'id' => 8,
-            'user_id' => 3,
-            'fow_id' => 4,
-        ]);
-
-        Interest::create([
-            'id' => 9,
-            'user_id' => 3,
-            'fow_id' => 5,
-        ]);
-
-        Interest::create([
-            'id' => 10,
-            'user_id' => 4,
-            'fow_id' => 4,
-        ]);
-
-        Interest::create([
-            'id' => 11,
-            'user_id' => 4,
-            'fow_id' => 5,
-        ]);
-
-        Interest::create([
-            'id' => 12,
-            'user_id' => 4,
-            'fow_id' => 1,
-        ]);
-
-        Interest::create([
-            'id' => 13,
-            'user_id' => 5,
-            'fow_id' => 5,
-        ]);
-
-        Interest::create([
-            'id' => 14,
-            'user_id' => 5,
-            'fow_id' => 1,
-        ]);
-
-        Interest::create([
-            'id' => 15,
-            'user_id' => 5,
-            'fow_id' => 2,
-        ]);
         // create avatars
         Avatar::create([
             'id' => 1,
