@@ -24,10 +24,24 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="/">Home</a>
+                        <div class="dropdown">
+                            <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                {{ Config::get('languages')[App::getLocale()] }}
+                            </button>
+                            <ul class="dropdown-menu">
+                                @foreach (Config::get('languages') as $lang => $language)
+                                    <li><a class="dropdown-item" href="{{ route('lang.switch', $lang) }}">
+                                            {{ $language }}</a></li>
+                                @endforeach
+                            </ul>
+                        </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/login">Login</a>
+                        <a class="nav-link" href="/">{{ __('auth.home') }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">{{ __('auth.login') }}</a>
                     </li>
                 </ul>
             </div>

@@ -47,4 +47,4 @@ Route::get('/settings', [UserController::class, 'index_settings'])->middleware('
 Route::post('/invis', [UserController::class, 'invis'])->middleware('usermiddleware');
 Route::post('/vis', [UserController::class, 'vis'])->middleware('usermiddleware');
 Route::post('/search', [UserController::class, 'search']);
-Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => [LanguageController::class, 'switchLang']]);
+Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\LanguageController@switchLang']);

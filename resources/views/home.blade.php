@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="d-flex justify-content-center my-4">
-        <h1>Home</h1>
+        <h1>{{ __('home.home') }}</h1>
     </div>
     <div class="d-flex justify-content-center my-4">
         <form method="post" action="/search" class="d-flex" role="search" style="width: 80rem">
