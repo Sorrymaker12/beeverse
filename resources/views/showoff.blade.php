@@ -4,10 +4,10 @@
 
 @section('content')
     <div class="d-flex justify-content-center my-4">
-        <h1>Show off</h1>
+        <h1>{{ __('show.so') }}</h1>
     </div>
     <div class="d-flex justify-content-center my-4">
-        <h3>Your Avatar :</h3>
+        <h3>{{ __('show.ya') }} :</h3>
     </div>
     <div class="d-flex mx-4 my-4 justify-content-center">
         <div class="row row-cols-1 row-cols-md-2 g-4 mx-5">
@@ -21,14 +21,13 @@
                                         style="height: 20rem; width: 20rem; object-fit: cover; object-position: 100% 0;">
                                     <div class="card-body text-center">
                                         <h3>{{ $a->name }}</h3>
-                                        <h4>Price : {{ $a->price }}</h4>
-                                        <h4>Owned by : {{ $user->name }}</h4>
+                                        <h4>{{ __('show.p') }} : {{ $a->price }}</h4>
+                                        <h4>{{ __('show.ob') }} : {{ $user->name }}</h4>
                                         <form action="/changepp" method="post" class="my-4">
                                             @csrf
                                             <input type="hidden" name="avatar_id" value="{{ $a->id }}">
                                             <button type="submit" class="btn btn-primary"
-                                                style="background-color: #89CFF0; border-color: #89CFF0">Change
-                                                Profile Picture</button>
+                                                style="background-color: #89CFF0; border-color: #89CFF0">{{ __('show.cpp') }}</button>
                                         </form>
                                     </div>
                                 </div>

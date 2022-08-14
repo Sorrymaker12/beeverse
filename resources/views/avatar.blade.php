@@ -4,14 +4,14 @@
 
 @section('content')
     <div class="d-flex justify-content-center my-4">
-        <h1>Avatar Shop</h1>
+        <h1>{{ __('avatar.as') }}</h1>
     </div>
     <div class="d-flex justify-content-center my-4">
-        <h3>Your Coins : {{ $user->coins }}</h3>
+        <h3>{{ __('avatar.yc') }} {{ $user->coins }}</h3>
     </div>
     <div class="d-flex justify-content-center my-4">
-        <a class="btn btn-primary" href="/topup" role="button" style="background-color: #89CFF0; border-color: #89CFF0">Top
-            Up</a>
+        <a class="btn btn-primary" href="/topup" role="button"
+            style="background-color: #89CFF0; border-color: #89CFF0">{{ __('avatar.tu') }}</a>
     </div>
     <div class="d-flex mx-4 my-4 justify-content-center">
         <div class="row row-cols-1 row-cols-md-5 g-4 mx-5">
@@ -28,13 +28,13 @@
                                     @csrf
                                     <input type="hidden" name="avatar_id" value="{{ $a->id }}">
                                     <button type="submit" class="btn btn-primary"
-                                        style="background-color: #89CFF0; border-color: #89CFF0">Buy</button>
+                                        style="background-color: #89CFF0; border-color: #89CFF0">{{ __('avatar.b') }}</button>
                                 </form>
                                 <form action="/gift" method="get" class="mx-4">
                                     @csrf
                                     <input type="hidden" name="avatar_id" value="{{ $a->id }}">
                                     <button type="submit" class="btn btn-primary"
-                                        style="background-color: #89CFF0; border-color: #89CFF0">Gift</button>
+                                        style="background-color: #89CFF0; border-color: #89CFF0">{{ __('avatar.g') }}</button>
                                 </form>
                             </div>
                         </div>

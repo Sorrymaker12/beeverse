@@ -4,13 +4,13 @@
 
 @section('content')
     <div class="d-flex justify-content-center my-4">
-        <h1>Friends</h1>
+        <h1>{{ __('friends.f') }}</h1>
     </div>
     <div class="d-flex mx-4 my-4 justify-content-center">
         <div class="d-flex flex-column mb-3 text-center">
-            <h5>Received Friend Request</h5>
+            <h5>{{ __('friends.r') }}</h5>
             @if ($req->isEmpty())
-                <p>There is no friend request</p>
+                <p>{{ __('friends.nonereq') }}</p>
             @else
                 @foreach ($req as $r)
                     @foreach ($users as $u)
@@ -21,19 +21,20 @@
                                         alt="..."
                                         style="height: 20rem; width: 20rem; object-fit: cover; object-position: 100% 0;">
                                     <div class="card-body">
-                                        <p> <strong>Name :</strong> {{ $u->name }}</p>
-                                        <p> <strong>Email :</strong> {{ $u->email }}</p>
-                                        <p> <strong>Mobile Number :</strong> {{ $u->mobile_number }}</p>
-                                        <p> <strong>Linkedin :</strong> {{ $u->linkedin }}</p>
-                                        <p> <strong>Current Profession : </strong>{{ $u->current_job }} at
+                                        <p> <strong>{{ __('friends.name') }} :</strong> {{ $u->name }}</p>
+                                        <p> <strong>{{ __('friends.email') }} :</strong> {{ $u->email }}</p>
+                                        <p> <strong>{{ __('friends.mn') }} :</strong> {{ $u->mobile_number }}</p>
+                                        <p> <strong>{{ __('friends.linkedin') }} :</strong> {{ $u->linkedin }}</p>
+                                        <p> <strong>{{ __('friends.cp') }} : </strong>{{ $u->current_job }}
+                                            {{ __('friends.at') }}
                                             {{ $u->current_company }}</p>
-                                        <p> <strong>Current Field of Work : </strong>{{ $u->current_fow }}</p>
+                                        <p> <strong>{{ __('friends.cfow') }} : </strong>{{ $u->current_fow }}</p>
                                         </p>
                                         <form action="/accept" method="post">
                                             @csrf
                                             <input type="hidden" name="user_id" value="{{ $u->id }}">
                                             <button type="submit" class="btn btn-primary"
-                                                style="background-color: #89CFF0; border-color: #89CFF0">Accept</button>
+                                                style="background-color: #89CFF0; border-color: #89CFF0">{{ __('friends.acc') }}</button>
                                         </form>
                                     </div>
                                 </div>
@@ -42,9 +43,9 @@
                     @endforeach
                 @endforeach
             @endif
-            <h5>Friends</h5>
+            <h5>{{ __('friends.f') }}</h5>
             @if ($friends->isEmpty())
-                <p>You have no friends</p>
+                <p>{{ __('friends.nonefr') }}</p>
             @else
                 @foreach ($friends as $f)
                     @foreach ($users as $u)
@@ -55,15 +56,17 @@
                                         alt="..."
                                         style="height: 20rem; width: 20rem; object-fit: cover; object-position: 100% 0;">
                                     <div class="card-body">
-                                        <p> <strong>Name :</strong> {{ $u->name }}</p>
-                                        <p> <strong>Email :</strong> {{ $u->email }}</p>
-                                        <p> <strong>Mobile Number :</strong> {{ $u->mobile_number }}</p>
-                                        <p> <strong>Linkedin :</strong> {{ $u->linkedin }}</p>
-                                        <p> <strong>Current Profession : </strong>{{ $u->current_job }} at
+                                        <p> <strong>{{ __('friends.name') }} :</strong> {{ $u->name }}</p>
+                                        <p> <strong>{{ __('friends.email') }} :</strong> {{ $u->email }}</p>
+                                        <p> <strong>{{ __('friends.mn') }} :</strong> {{ $u->mobile_number }}</p>
+                                        <p> <strong>{{ __('friends.linkedin') }} :</strong> {{ $u->linkedin }}</p>
+                                        <p> <strong>{{ __('friends.cp') }} : </strong>{{ $u->current_job }}
+                                            {{ __('friends.at') }}
                                             {{ $u->current_company }}</p>
-                                        <p> <strong>Current Field of Work : </strong>{{ $u->current_fow }}</p>
+                                        <p> <strong>{{ __('friends.cfow') }} : </strong>{{ $u->current_fow }}</p>
                                         <a class="btn btn-primary" href="{{ $f->video_link }}" target="_blank"
-                                            role="button" style="background-color: #89CFF0; border-color: #89CFF0">Call</a>
+                                            role="button"
+                                            style="background-color: #89CFF0; border-color: #89CFF0">{{ __('friends.call') }}</a>
                                     </div>
                                 </div>
                             </div>
@@ -71,9 +74,9 @@
                     @endforeach
                 @endforeach
             @endif
-            <h5>Pending Friend Request</h5>
+            <h5>{{ __('friends.p') }}</h5>
             @if ($pending->isEmpty())
-                <p>You have no pending friend request</p>
+                <p>{{ __('friends.nonep') }}</p>
             @else
                 @foreach ($pending as $p)
                     @foreach ($users as $u)
@@ -84,13 +87,14 @@
                                         alt="..."
                                         style="height: 20rem;  width: 20rem; object-fit: cover; object-position: 100% 0;">
                                     <div class="card-body">
-                                        <p> <strong>Name :</strong> {{ $u->name }}</p>
-                                        <p> <strong>Email :</strong> {{ $u->email }}</p>
-                                        <p> <strong>Mobile Number :</strong> {{ $u->mobile_number }}</p>
-                                        <p> <strong>Linkedin :</strong> {{ $u->linkedin }}</p>
-                                        <p> <strong>Current Profession : </strong>{{ $u->current_job }} at
+                                        <p> <strong>{{ __('friends.name') }} :</strong> {{ $u->name }}</p>
+                                        <p> <strong>{{ __('friends.email') }} :</strong> {{ $u->email }}</p>
+                                        <p> <strong>{{ __('friends.mn') }} :</strong> {{ $u->mobile_number }}</p>
+                                        <p> <strong>{{ __('friends.linkedin') }} :</strong> {{ $u->linkedin }}</p>
+                                        <p> <strong>{{ __('friends.cp') }} : </strong>{{ $u->current_job }}
+                                            {{ __('friends.at') }}
                                             {{ $u->current_company }}</p>
-                                        <p> <strong>Current Field of Work : </strong>{{ $u->current_fow }}</p>
+                                        <p> <strong>{{ __('friends.cfow') }} : </strong>{{ $u->current_fow }}</p>
                                     </div>
                                 </div>
                             </div>

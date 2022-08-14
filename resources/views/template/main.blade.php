@@ -27,18 +27,18 @@
             @if (Auth::check())
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <ul class="navbar-nav">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                {{ Config::get('languages')[App::getLocale()] }}
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                @foreach (Config::get('languages') as $lang => $language)
-                                    @if ($lang != App::getLocale())
-                                        <a class="dropdown-item" href="{{ route('lang.switch', $lang) }}">
-                                            {{ $language }}</a>
-                                    @endif
-                                @endforeach
+                        <li class="nav-item">
+                            <div class="dropdown">
+                                <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    {{ Config::get('languages')[App::getLocale()] }}
+                                </button>
+                                <ul class="dropdown-menu">
+                                    @foreach (Config::get('languages') as $lang => $language)
+                                        <li><a class="dropdown-item" href="{{ route('lang.switch', $lang) }}">
+                                                {{ $language }}</a></li>
+                                    @endforeach
+                                </ul>
                             </div>
                         </li>
                         <li class="nav-item">

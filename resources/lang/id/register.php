@@ -14,9 +14,9 @@ return [
     'currjob' => 'Profesi Saat Ini',
     'currc' => 'Perusahaan Saat Ini',
     'currfow' => 'Bidang Pekerjaan Saat Ini',
-    'int1' => 'Bidang Pekerjaan Yang Menarik Anda 1 :',
-    'int2' => 'Bidang Pekerjaan Yang Menarik Anda 2 :',
-    'int3' => 'Bidang Pekerjaan Yang Menarik Anda 3 :',
+    'int1' => 'Minat Anda 1 :',
+    'int2' => 'Minat Anda 2 :',
+    'int3' => 'Minat Anda 3 :',
     'pp' => 'Foto Profil',
     'price' => 'Harga Pendaftaran'
 ];

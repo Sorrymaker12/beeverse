@@ -5,4 +5,5 @@ return [
     'email' => 'Email Address',
     'password' => 'Password',
     'register' => 'Register',
+    'question' => 'Don\'t have an account?',
 ];

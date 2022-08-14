@@ -4,11 +4,11 @@
 
 @section('content')
     <div class="d-flex my-4 mx-4">
-        <a class="btn btn-primary" href="/" role="button" style="background-color: #89CFF0; border-color: #89CFF0">Go
-            Back</a>
+        <a class="btn btn-primary" href="/" role="button"
+            style="background-color: #89CFF0; border-color: #89CFF0">{{ __('search_result.gb') }}</a>
     </div>
     <div class="d-flex justify-content-center my-4">
-        <h1>Search Results</h1>
+        <h1>{{ __('search_result.sr') }}</h1>
     </div>
     <div class="d-flex mx-4 my-4 justify-content-center">
         <div class="row row-cols-1 cols-md-2 g-4 justify-content-center">
@@ -32,7 +32,7 @@
                                     <p>{{ $user->fow_3 }}</p>
                                     <div class="d-flex flex-row mb-3 justify-content-center">
                                         <a class="btn btn-primary mx-2" href="/profile/{{ $user->id }}" role="button"
-                                            style="background-color: #89CFF0; border-color: #89CFF0">View Profile</a>
+                                            style="background-color: #89CFF0; border-color: #89CFF0">{{ __('search_result.vp') }}</a>
                                         <form method="POST" action="/wish">
                                             @csrf
                                             <input type="hidden" name="user_id" value="{{ $user->id }}">

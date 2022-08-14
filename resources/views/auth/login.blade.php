@@ -36,7 +36,7 @@
             </div>
             <div class="py-3"></div>
             <div class="d-flex justify-content-center p-2">
-                <p>Don't have an account? <a href="/register">{{ __('login.register') }}</a></p>
+                <p>{{ __('login.question') }} <a href="/register">{{ __('login.register') }}</a></p>
             </div>
         </div>
     </div>

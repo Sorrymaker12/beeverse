@@ -12,11 +12,11 @@
             <input class="form-control mx-2" type="text" placeholder="Search By Field Of Work" aria-label="Search"
                 name="fow">
             <select class="form-select mx-2" aria-label="Default select example" name="gender">
-                <option value="either">Both Genders</option>
-                <option value="female">Male</option>
-                <option value="male">Female</option>
+                <option value="either">{{ __('home.bg') }}</option>
+                <option value="female">{{ __('home.m') }}</option>
+                <option value="male">{{ __('home.f') }}</option>
             </select>
-            <button class="btn btn-outline-success" type="submit">Search</button>
+            <button class="btn btn-outline-success" type="submit">{{ __('home.s') }}</button>
         </form>
     </div>
     <div class="d-flex mx-4 my-4 justify-content-center">
@@ -33,15 +33,16 @@
                                         style="width: 16rem; height: 21.9rem; object-fit:cover; object-position: 100% 0"></a>
                                 <div class="card-body text-center">
                                     <h5 class="card-title">{{ $user->name }}</h5>
-                                    <h5 class="card-title">{{ $user->current_job }} at {{ $user->current_company }}</h5>
-                                    <h5 class="card-title">{{ $user->current_fow }} Field of Work</h5>
-                                    <h5 class="card-title"> Interests : </h5>
+                                    <h5 class="card-title">{{ $user->current_job }} {{ __('home.at') }}
+                                        {{ $user->current_company }}</h5>
+                                    <h5 class="card-title">{{ $user->current_fow }} {{ __('home.fow') }}</h5>
+                                    <h5 class="card-title"> {{ __('home.int') }}</h5>
                                     <p>{{ $user->fow_1 }}</p>
                                     <p>{{ $user->fow_2 }}</p>
                                     <p>{{ $user->fow_3 }}</p>
                                     <div class="d-flex flex-row mb-3 justify-content-center">
                                         <a class="btn btn-primary mx-2" href="/profile/{{ $user->id }}" role="button"
-                                            style="background-color: #89CFF0; border-color: #89CFF0">View Profile</a>
+                                            style="background-color: #89CFF0; border-color: #89CFF0">{{ __('home.vp') }}</a>
                                         <form method="POST" action="/wish">
                                             @csrf
                                             <input type="hidden" name="user_id" value="{{ $user->id }}">
