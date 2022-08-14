@@ -11,6 +11,7 @@ use App\Models\FieldOfWork;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Models\AvatarCollection;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redis;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -19,7 +20,14 @@ class UserController extends Controller
     //
     public function index_home()
     {
-        $users = User::where('visible', '=', 'visible')->get();
+        // kalo login exclude user yg login
+        if (Auth::check()) {
+            // jangan masukin user yang login ke users
+            $users = User::where('visible', '=', 'visible')->where('id', '!=', Auth::user()->id)->get();
+        } else {
+            // masukin smua
+            $users = User::where('visible', '=', 'visible')->get();
+        }
         return view('home', ['users' => $users]);
     }
 
@@ -178,7 +186,7 @@ class UserController extends Controller
         $check1 = Wishlist::where('user1_id', $user->id)->where('user2_id', $friend->id)->first();
         $check2 = Wishlist::where('user1_id', $friend->id)->where('user2_id', $user->id)->first();
         if ($check1 || $check2) {
-            Alert::error('Failed', 'You Have Already Sent A Request');
+            Alert::error('Failed', 'You Have Already Sent A Request or You Are Already Friends');
             return redirect('/home');
         }
 
@@ -194,8 +202,9 @@ class UserController extends Controller
 
     public function index_friends()
     {
+        // pasttiin ga ada user yang login
         $user = auth()->user();
-        $users = User::all();
+        $users = User::where('id', '!=', $user->id)->get();
 
         $req = Wishlist::where('user2_id', $user->id)->where('status2', 'pending')->get();
         $friends = Wishlist::where([['user1_id', '=', $user->id], ['status1', '=', 'accepted'], ['status2', '=', 'accepted']])->orWhere([['user2_id', '=', $user->id], ['status1', '=', 'accepted'], ['status2', '=', 'accepted']])->get();
@@ -284,8 +293,9 @@ class UserController extends Controller
 
     public function index_gift(Request $request)
     {
+        // pastiin di rec ga ada user yang lagi login
         $user = auth()->user();
-        $rec = User::all();
+        $rec = User::where('id', '!=', Auth::user()->id)->get();
         $avatar = Avatar::find($request->avatar_id);
 
         return view('gift', ['user' => $user, 'avatar' => $avatar, 'rec' => $rec]);
@@ -385,12 +395,20 @@ class UserController extends Controller
 
     public function search(Request $request)
     {
-        $name = $request->name;
-        $users = User::where('gender', '!=', $request->gender)->where('visible', '=', 'visible')->where(
-            function ($query) use ($request) {
-                $query->where('current_fow', 'like', '%' . $request->fow . '%')->orWhere('fow_1', 'like', '%' . $request->fow . '%')->orWhere('fow_2', 'like', '%' . $request->fow . '%')->orWhere('fow_3', 'like', '%' . $request->fow . '%');
-            }
-        )->get();
+        // pastiin user yang lagi login ga muncul di search
+        if (Auth::check()) {
+            $users = User::where('gender', '!=', $request->gender)->where('visible', '=', 'visible')->where('id', '!=', Auth::user()->id)->where(
+                function ($query) use ($request) {
+                    $query->where('current_fow', 'like', '%' . $request->fow . '%')->orWhere('fow_1', 'like', '%' . $request->fow . '%')->orWhere('fow_2', 'like', '%' . $request->fow . '%')->orWhere('fow_3', 'like', '%' . $request->fow . '%');
+                }
+            )->get();
+        } else {
+            $users = User::where('gender', '!=', $request->gender)->where('visible', '=', 'visible')->where(
+                function ($query) use ($request) {
+                    $query->where('current_fow', 'like', '%' . $request->fow . '%')->orWhere('fow_1', 'like', '%' . $request->fow . '%')->orWhere('fow_2', 'like', '%' . $request->fow . '%')->orWhere('fow_3', 'like', '%' . $request->fow . '%');
+                }
+            )->get();
+        }
 
         if ($users->isEmpty()) {
             Alert::error('No Users Found', 'No Users Found');

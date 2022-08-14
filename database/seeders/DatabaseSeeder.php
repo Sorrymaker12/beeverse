@@ -46,11 +46,11 @@ class DatabaseSeeder extends Seeder
 
         User::create([
             'id' => 2,
-            'name' => 'Kim Min Minju',
+            'name' => 'Song Hye Kyo',
             'email' => 'b@gmail.com',
             'password' => bcrypt('12345678'),
             'gender' => 'female',
-            'linkedin' => 'https://www.linkedin.com/in/' . 'MinMinju',
+            'linkedin' => 'https://www.linkedin.com/in/' . 'SongHyeKyo',
             'mobile_number' => '123456',
             'current_job' => 'Vice Director',
             'current_company' => 'Anthony\'s Company',
@@ -58,7 +58,7 @@ class DatabaseSeeder extends Seeder
             'fow_1' => 'Entertainment',
             'fow_2' => 'Music',
             'fow_3' => 'Events',
-            'profile_picture' => 'profile' . 2 . '.jpeg',
+            'profile_picture' => 'profile' . 2 . '.jpg',
             'registration_price' => 120000,
             'coins' => 65000,
         ]);
@@ -84,15 +84,15 @@ class DatabaseSeeder extends Seeder
 
         User::create([
             'id' => 4,
-            'name' => 'Minatozaki Sana',
+            'name' => 'Han So Hee',
             'email' => 'd@gmail.com',
             'password' => bcrypt('12345678'),
             'gender' => 'female',
-            'linkedin' => 'https://www.linkedin.com/in/' . 'Sana',
+            'linkedin' => 'https://www.linkedin.com/in/' . 'HanSoHee',
             'mobile_number' => '123456',
             'current_job' => 'Vice Manager',
             'current_company' => 'Anthony\'s Company',
-            'profile_picture' => 'profile' . 4 . '.jpeg',
+            'profile_picture' => 'profile' . 4 . '.jpg',
             'current_fow' => 'Music',
             'fow_1' => 'Music',
             'fow_2' => 'Art',

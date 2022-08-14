@@ -23,9 +23,7 @@
                     @csrf
                     <select class="form-select my-4" aria-label="Default select example" name="rec_id">
                         @foreach ($rec as $r)
-                            @if ($r->id != $user->id)
-                                <option value="{{ $r->id }}">{{ $r->name }}</option>
-                            @endif
+                            <option value="{{ $r->id }}">{{ $r->name }}</option>
                         @endforeach
                     </select>
                     <input type="hidden" name="avatar_id" value="{{ $avatar->id }}">

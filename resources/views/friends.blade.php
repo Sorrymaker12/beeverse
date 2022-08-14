@@ -49,7 +49,7 @@
             @else
                 @foreach ($friends as $f)
                     @foreach ($users as $u)
-                        @if (($u->id == $f->user1_id || $u->id == $f->user2_id) && $u->id != Auth::user()->id)
+                        @if ($u->id == $f->user1_id || $u->id == $f->user2_id)
                             <div class="card mx-4 my-4" style="width: 48rem; height: 20rem">
                                 <div class="d-flex flex-row mb-3">
                                     <img src="{{ asset('Storage/img/' . $u->profile_picture) }}" class="img-fluid"
